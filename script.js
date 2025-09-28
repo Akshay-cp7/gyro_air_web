@@ -9,67 +9,213 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeButtonEffects();
     initializeGyroscopeAnimation();
     initializeAccessibility();
+    createSecurityWarningModal(); // Add this new function
 });
 
-// Download Button Functionality
+// Create Security Warning Modal with Real Screenshot
+function createSecurityWarningModal() {
+    // Create modal HTML with actual screenshot
+    const modalHTML = `
+    <div id="securityModal" class="security-modal" style="display: none;">
+        <div class="modal-backdrop" onclick="closeSecurityModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="warning-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Security Notice - Windows SmartScreen Warning</h3>
+                <button class="modal-close" onclick="closeSecurityModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="warning-preview">
+                    <div class="screenshot-container">
+                        <img src="screenshot_gyroair.PNG" alt="Windows SmartScreen Security Warning Dialog" class="security-screenshot" />
+                        <div class="screenshot-overlay">
+                            <div class="overlay-badge">
+                                <i class="fas fa-eye"></i>
+                                <span>Expected Warning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4><i class="fas fa-info-circle"></i> Why does this happen?</h4>
+                    <p>Windows SmartScreen shows this warning because we're not yet a verified publisher with Microsoft. This is normal for new software and doesn't mean the file is unsafe.</p>
+
+                    <div class="solution-steps">
+                        <h5><i class="fas fa-lightbulb"></i> How to proceed:</h5>
+                        <ol>
+                            <li>When you see this dialog, click <strong>"More info"</strong> (if available)</li>
+                            <li>Then click <strong>"Run anyway"</strong> to install GyroAir</li>
+                            <li>You may need to allow it through Windows Firewall</li>
+                            <li>If no "More info" link, click <strong>"Run"</strong> directly</li>
+                        </ol>
+                    </div>
+
+                    <div class="safety-note">
+                        <h5><i class="fas fa-lock"></i> Safety Assurance</h5>
+                        <ul>
+                            <li>✓ GyroAir is completely open-source</li>
+                            <li>✓ No malware, no data collection</li>
+                            <li>✓ Code is publicly available for inspection</li>
+                            <li>✓ No internet connection required after setup</li>
+                            <li>✓ Works entirely on your local Wi-Fi network</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeSecurityModal()">
+                    <i class="fas fa-arrow-left"></i>
+                    Cancel Download
+                </button>
+                <button class="btn-primary" onclick="proceedWithDownload()">
+                    <i class="fas fa-download"></i>
+                    I Understand, Download Anyway
+                </button>
+            </div>
+        </div>
+    </div>
+    `;
+
+    // Insert modal into document
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+// Show Security Modal
+function showSecurityModal() {
+    const modal = document.getElementById('securityModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        // Add animation
+        requestAnimationFrame(() => {
+            modal.classList.add('show');
+        });
+
+        // Focus management for accessibility
+        const firstButton = modal.querySelector('.btn-primary');
+        if (firstButton) {
+            firstButton.focus();
+        }
+
+        // Track event
+        trackEvent('security_modal_shown', 'download_warning');
+    }
+}
+
+// Close Security Modal
+function closeSecurityModal() {
+    const modal = document.getElementById('securityModal');
+    if (modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+
+        // Track event
+        trackEvent('security_modal_closed', 'user_cancelled');
+    }
+}
+
+// Proceed with actual download
+function proceedWithDownload() {
+    closeSecurityModal();
+
+    // Show brief confirmation
+    if (window.announceToScreenReader) {
+        window.announceToScreenReader('Download starting...');
+    }
+
+    // Proceed with actual download
+    actuallyDownloadFile();
+
+    // Track event
+    trackEvent('download_proceeded', 'after_warning');
+}
+
+// Actual download function
+function actuallyDownloadFile() {
+    const downloadUrl = 'https://raw.githubusercontent.com/Akshay-cp7/gyro_air/main/dist/GyroAir.exe';
+
+    // Create download link
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = 'GyroAir.exe';
+    link.style.display = 'none';
+
+    // Trigger download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Show success notification
+    showDownloadNotification();
+}
+
+// Show download success notification
+function showDownloadNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'download-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <div>
+                <strong>Download Started!</strong>
+                <p>GyroAir.exe is being downloaded to your Downloads folder</p>
+            </div>
+            <button onclick="this.parentElement.parentElement.remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(notification);
+
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 5000);
+}
+
+// Modified Download Button Functionality
 function initializeDownload() {
     const downloadBtn = document.getElementById('downloadBtn');
     const downloadBtnMain = document.getElementById('downloadBtnMain');
-    const downloadUrl = 'https://raw.githubusercontent.com/Akshay-cp7/gyro_air/main/dist/GyroAir.exe';
 
     function handleDownload(button) {
         if (!button) return;
 
-        // Add downloading state
-        button.classList.add('downloading');
-        button.disabled = true;
+        // Show security warning modal instead of direct download
+        showSecurityModal();
 
-        // Update button text
-        const buttonText = button.querySelector('.btn-text') || button.querySelector('span');
-        const originalText = buttonText ? buttonText.textContent : 'Download for Windows';
-        
-        if (buttonText) {
-            buttonText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
-        }
-
-        // Create download link
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.download = 'GyroAir.exe';
-        link.style.display = 'none';
-
-        // Trigger download
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // Show success state
-        setTimeout(() => {
-            if (buttonText) {
-                buttonText.innerHTML = '<i class="fas fa-check"></i> Download Started';
-            }
-
-            // Reset button after delay
-            setTimeout(() => {
-                button.classList.remove('downloading');
-                button.disabled = false;
-                if (buttonText) {
-                    buttonText.innerHTML = '<i class="fas fa-download"></i> ' + originalText.replace(/.*Download/, 'Download');
-                }
-            }, 3000);
-        }, 1500);
-
-        // Track download event
-        trackEvent('download', 'GyroAir.exe');
+        // Track event
+        trackEvent('download_initiated', 'security_warning_shown');
     }
 
     // Attach click handlers
     if (downloadBtn) {
-        downloadBtn.addEventListener('click', () => handleDownload(downloadBtn));
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleDownload(downloadBtn);
+        });
     }
 
     if (downloadBtnMain) {
-        downloadBtnMain.addEventListener('click', () => handleDownload(downloadBtnMain));
+        downloadBtnMain.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleDownload(downloadBtnMain);
+        });
     }
 }
 
@@ -79,7 +225,7 @@ function initializeGyroscopeAnimation() {
     const gyroX = document.getElementById('gyroX');
     const gyroY = document.getElementById('gyroY');
     const gyroZ = document.getElementById('gyroZ');
-    
+
     if (!gyroContainer) return;
 
     let mouseX = 0;
@@ -200,7 +346,7 @@ function initializeFAQ() {
                 // Toggle current item
                 if (!isActive) {
                     item.classList.add('active');
-                    
+
                     // Smooth scroll to FAQ item if needed
                     setTimeout(() => {
                         const rect = item.getBoundingClientRect();
@@ -231,7 +377,7 @@ function initializeFAQ() {
 // Smooth Scrolling for Anchor Links
 function initializeSmoothScrolling() {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -240,7 +386,7 @@ function initializeSmoothScrolling() {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                
+
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -270,7 +416,7 @@ function initializeScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                
+
                 // Add staggered animation for child elements
                 const children = entry.target.querySelectorAll('.feature-card, .setup-step, .faq-item');
                 children.forEach((child, index) => {
@@ -285,7 +431,7 @@ function initializeScrollAnimations() {
     // Observe elements for animation
     const animatedElements = document.querySelectorAll([
         '.features-section',
-        '.setup-section',
+        '.setup-section', 
         '.download-section',
         '.faq-section'
     ].join(','));
@@ -333,7 +479,7 @@ function initializeScrollAnimations() {
 // Enhanced Button Effects
 function initializeButtonEffects() {
     const buttons = document.querySelectorAll('.cta-primary, .download-primary, .cta-secondary');
-    
+
     buttons.forEach(button => {
         // Add ripple effect
         button.addEventListener('click', function(e) {
@@ -443,6 +589,9 @@ function initializeAccessibility() {
 
         // Handle Escape key
         if (e.key === 'Escape') {
+            // Close security modal
+            closeSecurityModal();
+
             // Close any open modals or dropdowns
             const activeElements = document.querySelectorAll('.active');
             activeElements.forEach(element => {
@@ -533,13 +682,11 @@ function initializePerformanceMonitoring() {
     window.addEventListener('load', function() {
         // Use requestIdleCallback if available
         const scheduleWork = window.requestIdleCallback || setTimeout;
-        
         scheduleWork(() => {
             if ('performance' in window) {
                 const perfData = performance.timing;
                 const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
                 console.log(`Page loaded in ${pageLoadTime}ms`);
-                
                 trackEvent('performance', `page_load_${Math.round(pageLoadTime)}ms`);
             }
         });
@@ -569,15 +716,19 @@ window.GyroAir = {
     initializeDownload,
     initializeFAQ,
     initializeGyroscopeAnimation,
-    
+
+    // Security functions
+    showSecurityModal,
+    closeSecurityModal,
+
     // Utilities
     debounce,
     throttle,
     trackEvent,
-    
+
     // Accessibility
     announceToScreenReader: () => window.announceToScreenReader,
-    
+
     // Version
     version: '1.0.0'
 };

@@ -1380,3 +1380,508 @@ button:focus,
     outline: 2px solid #667eea;
     outline-offset: 2px;
 }
+
+
+
+/* Security Warning Modal Styles - Screenshot Version */
+.security-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.security-modal.show {
+    opacity: 1;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: var(--radius-xl);
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-light);
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.security-modal.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+}
+
+.warning-icon {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.warning-icon i {
+    font-size: 1.25rem;
+    color: white;
+    animation: warningPulse 2s ease-in-out infinite;
+}
+
+@keyframes warningPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.modal-header h3 {
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background: var(--surface-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: var(--surface-tertiary);
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 2rem;
+}
+
+/* Screenshot Container */
+.warning-preview {
+    margin-bottom: 2rem;
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    background: #f8fafc;
+}
+
+.screenshot-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    padding: 1rem;
+}
+
+.security-screenshot {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.security-screenshot:hover {
+    transform: scale(1.02);
+}
+
+.screenshot-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+}
+
+.overlay-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-small);
+}
+
+.overlay-badge i {
+    color: #f59e0b;
+    font-size: 0.875rem;
+}
+
+/* Info Section */
+.info-section {
+    background: var(--surface-secondary);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+}
+
+.info-section h4, .info-section h5 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.info-section h5 {
+    font-size: 0.9rem;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.info-section h5:first-of-type {
+    margin-top: 1rem;
+}
+
+.info-section p {
+    color: var(--text-secondary);
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+}
+
+.solution-steps ol {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.solution-steps li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.solution-steps li strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.safety-note ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.safety-note li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.safety-note li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #10b981;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Modal Footer */
+.modal-footer {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 2rem 2rem;
+    border-top: 1px solid var(--border-light);
+    justify-content: space-between;
+}
+
+.btn-secondary, .btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 0.95rem;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.btn-secondary {
+    background: var(--surface-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+    background: var(--surface-secondary);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-small);
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: var(--shadow-small);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Download Notification */
+.download-notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-light);
+    max-width: 350px;
+    z-index: 10001;
+    animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+}
+
+.notification-content i:first-child {
+    color: #10b981;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.notification-content div {
+    flex: 1;
+}
+
+.notification-content strong {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.notification-content p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notification-content button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.notification-content button:hover {
+    background: var(--surface-secondary);
+    color: var(--text-primary);
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+    .security-modal {
+        padding: 0.5rem;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+    }
+
+    .modal-header, .modal-body, .modal-footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn-secondary, .btn-primary {
+        width: 100%;
+    }
+
+    .download-notification {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        max-width: none;
+    }
+
+    .screenshot-container {
+        padding: 0.5rem;
+        min-height: 200px;
+    }
+
+    .overlay-badge {
+        position: static;
+        margin-bottom: 0.5rem;
+        align-self: flex-start;
+    }
+}
+
+/* Tablet specific adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .modal-content {
+        max-width: 90%;
+    }
+
+    .screenshot-container {
+        min-height: 250px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .security-modal {
+        background: rgba(0, 0, 0, 0.95);
+    }
+
+    .modal-content {
+        border: 2px solid #000;
+    }
+
+    .warning-icon {
+        background: #ff6b00;
+    }
+
+    .btn-primary {
+        background: #0066cc;
+    }
+
+    .security-screenshot {
+        border: 2px solid #000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .security-modal,
+    .modal-content,
+    .warning-icon i,
+    .download-notification,
+    .security-screenshot {
+        animation: none;
+        transition-duration: 0.01ms;
+    }
+}
+
+/* Print styles - hide modal when printing */
+@media print {
+    .security-modal,
+    .download-notification {
+        display: none !important;
+    }
+}
+
+/* Focus styles for better accessibility */
+.security-screenshot:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+.overlay-badge:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Loading state for screenshot */
+.security-screenshot[src=""] {
+    background: var(--surface-secondary);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.security-screenshot[src=""]:before {
+    content: "Loading screenshot...";
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Error state for screenshot */
+.security-screenshot:not([src]):after {
+    content: "⚠️ Screenshot not available";
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 2rem;
+    background: var(--surface-tertiary);
+    border-radius: var(--radius-md);
+    border: 2px dashed var(--border-medium);
+}

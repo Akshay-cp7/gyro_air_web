@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GyroAir - Security Warning with Real Screenshot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style_with_screenshot.css">
+    <style>
+        /* CSS Variables for the design system */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --surface-secondary: #f8fafc;
+            --surface-tertiary: #f1f5f9;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6b7280;
+            --border-light: #e5e7eb;
+            --border-medium: #d1d5db;
+            --radius-full: 9999px;
+            --radius-xl: 16px;
+            --radius-lg: 12px;
+            --radius-md: 8px;
+            --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-primary {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .cta-secondary {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border: 2px solid #667eea;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cta-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Section -->
+    <section style="padding: 4rem 0; background: #f8fafc; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h1 style="color: #1a1a1a; margin-bottom: 1.5rem; font-size: 2.5rem; font-weight: 700;">GyroAir Security Warning Test</h1>
+                <p style="color: #6b7280; margin-bottom: 2rem; font-size: 1.25rem; line-height: 1.7;">
+                    Click the download button below to see the security warning popup that shows your actual Windows SmartScreen screenshot to users before they download.
+                </p>
+
+                <!-- Download Buttons -->
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap;">
+                    <button id="downloadBtn" class="download-primary">
+                        <i class="fas fa-download"></i>
+                        <span class="btn-text">Download GyroAir</span>
+                    </button>
+
+                    <button id="downloadBtnMain" class="cta-secondary">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </button>
+                </div>
+
+                <!-- Instructions -->
+                <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); text-align: left; margin: 2rem 0; border: 1px solid #e5e7eb;">
+                    <h3 style="color: #1a1a1a; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; font-size: 1.375rem;">
+                        <i class="fas fa-info-circle" style="color: #667eea; font-size: 1.5rem;"></i>
+                        What happens when you click download:
+                    </h3>
+                    <ol style="color: #6b7280; line-height: 1.8; margin: 0; padding-left: 1.5rem; font-size: 1.125rem;">
+                        <li style="margin-bottom: 0.75rem;"><strong>Security Modal Appears:</strong> A professional warning dialog opens immediately</li>
+                        <li style="margin-bottom: 0.75rem;"><strong>Real Screenshot Display:</strong> Shows your actual Windows SmartScreen warning image</li>
+                        <li style="margin-bottom: 0.75rem;"><strong>User Education:</strong> Explains why the warning appears and how to proceed safely</li>
+                        <li style="margin-bottom: 0.75rem;"><strong>Safety Assurance:</strong> Lists reasons why GyroAir is safe despite the warning</li>
+                        <li style="margin-bottom: 0.75rem;"><strong>User Control:</strong> User can cancel or proceed with full understanding</li>
+                        <li><strong>Download Confirmation:</strong> Success notification appears when download starts</li>
+                    </ol>
+                </div>
+
+                <!-- Features Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                    <!-- Screenshot Features -->
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 20px; color: white; text-align: left;">
+                        <h3 style="color: white; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; font-size: 1.25rem;">
+                            <i class="fas fa-image" style="font-size: 1.375rem;"></i>
+                            Real Screenshot Features:
+                        </h3>
+                        <ul style="margin: 0; padding-left: 0; line-height: 1.7; list-style: none;">
+                            <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #10b981; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Authentic Preview:</strong> Shows exact Windows SmartScreen dialog</span>
+                            </li>
+                            <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #10b981; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Visual Context:</strong> Users see what to expect before download</span>
+                            </li>
+                            <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #10b981; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>High Quality:</strong> Crystal clear image with hover zoom effect</span>
+                            </li>
+                            <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #10b981; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Mobile Responsive:</strong> Perfect display on all device sizes</span>
+                            </li>
+                            <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #10b981; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Accessibility:</strong> Alt text and screen reader support</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Technical Features -->
+                    <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 2rem; border-radius: 20px; color: white; text-align: left;">
+                        <h3 style="color: white; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; font-size: 1.25rem;">
+                            <i class="fas fa-cog" style="font-size: 1.375rem;"></i>
+                            Technical Implementation:
+                        </h3>
+                        <ul style="margin: 0; padding-left: 0; line-height: 1.7; list-style: none;">
+                            <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #fbbf24; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Modal System:</strong> Professional overlay with backdrop blur</span>
+                            </li>
+                            <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #fbbf24; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Keyboard Navigation:</strong> Full accessibility support</span>
+                            </li>
+                            <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #fbbf24; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Smooth Animations:</strong> Elegant entrance and exit effects</span>
+                            </li>
+                            <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #fbbf24; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Event Tracking:</strong> Analytics for user behavior</span>
+                            </li>
+                            <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <i class="fas fa-check" style="color: #fbbf24; margin-top: 0.125rem; flex-shrink: 0;"></i>
+                                <span><strong>Error Handling:</strong> Graceful fallbacks and loading states</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- File Requirements -->
+                <div style="background: #fef3c7; border: 2px solid #f59e0b; padding: 2rem; border-radius: 16px; margin: 2rem 0;">
+                    <h4 style="color: #92400e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.125rem;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Required Files:
+                    </h4>
+                    <p style="color: #92400e; margin: 0; line-height: 1.6;">
+                        Make sure <code style="background: rgba(146, 64, 14, 0.1); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600;">screenshot_gyroair.PNG</code> 
+                        is in the same directory as your HTML file for the popup to display the actual Windows warning screenshot.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script_with_screenshot.js"></script>
+</body>
+</html>
