@@ -3,167 +3,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GyroAir - Open Source PC Mouse & Keyboard Controller</title>
+    <title>GyroAir - Turn Your Phone Into a Wireless Mouse & Keyboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Hero Section -->
-        <header class="hero">
-            <div class="hero-content">
-                <i class="fas fa-mobile-alt hero-icon"></i>
-                <h1>GyroAir</h1>
-                <p class="subtitle">Transform Your Phone into a PC Mouse & Keyboard</p>
-                <p class="description">
-                    Control your computer remotely using your phone's gyroscope and touch interface. 
-                    Free, open source, and works wirelessly over your local network.
-                </p>
+    <!-- Hero Section with Creative Gyroscope Visualization -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="floating-icons">
+                <i class="fas fa-wifi icon-float-1"></i>
+                <i class="fas fa-mouse icon-float-2"></i>
+                <i class="fas fa-keyboard icon-float-3"></i>
+                <i class="fas fa-mobile-alt icon-float-4"></i>
             </div>
-        </header>
+            <div class="gradient-blob blob-1"></div>
+            <div class="gradient-blob blob-2"></div>
+            <div class="gradient-blob blob-3"></div>
+        </div>
 
-        <!-- Features Section -->
-        <section class="features">
-            <div class="feature-grid">
-                <div class="feature">
-                    <i class="fas fa-mouse"></i>
-                    <h3>Air Mouse</h3>
-                    <p>Use your phone's gyroscope to control the mouse cursor with natural hand movements</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-keyboard"></i>
-                    <h3>Virtual Keyboard</h3>
-                    <p>Type text, use shortcuts, and control functions directly from your phone</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-wifi"></i>
-                    <h3>Wireless Connection</h3>
-                    <p>Connect over your local Wi-Fi network - no cables or Bluetooth pairing needed</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-code-branch"></i>
-                    <h3>Open Source</h3>
-                    <p>Completely free and open source - inspect, modify, and contribute to the code</p>
-                </div>
-            </div>
-        </section>
+        <div class="container">
+            <div class="hero-layout">
+                <!-- Left Content -->
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-text">🚀 Free & Open Source</span>
+                    </div>
 
-        <!-- Important Notice Section -->
-        <section class="notice-section">
-            <div class="notice-box warning">
-                <i class="fas fa-exclamation-triangle"></i>
-                <h3>Important Security Notice</h3>
-                <p>When downloading GyroAir PC Client, Windows may show a <strong>"Publisher could not be verified"</strong> warning or <strong>"Windows protected your PC"</strong> message from SmartScreen.</p>
-                
-                <div class="warning-steps">
-                    <h4>This is normal for unsigned open source software. To proceed:</h4>
-                    <ol>
-                        <li>Click <strong>"More info"</strong> on the SmartScreen warning</li>
-                        <li>Then click <strong>"Run anyway"</strong> to install</li>
-                        <li>The software is safe - this warning appears because we don't have a paid code signing certificate</li>
-                    </ol>
-                </div>
+                    <h1 class="hero-title">
+                        Transform Your <span class="gradient-text">Smartphone</span><br>
+                        Into a Wireless Mouse & Keyboard
+                    </h1>
 
-                <div class="security-info">
-                    <h4><i class="fas fa-shield-alt"></i> Why is GyroAir safe?</h4>
-                    <ul>
-                        <li><strong>Open Source:</strong> All code is publicly available on GitHub for inspection</li>
-                        <li><strong>No Data Collection:</strong> Works entirely on your local network</li>
-                        <li><strong>No Internet Required:</strong> Only connects between your phone and PC</li>
-                        <li><strong>Transparent:</strong> You can see exactly what the software does</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+                    <p class="hero-description">
+                        Experience seamless computer control using your phone's built-in gyroscope sensor. 
+                        No cables, no Bluetooth pairing - just pure wireless freedom over Wi-Fi.
+                    </p>
 
-        <!-- Download Section -->
-        <section class="download-section">
-            <div class="download-container">
-                <h2>Download GyroAir PC Client</h2>
-                <p>Download the Windows desktop application to receive commands from your phone</p>
-                
-                <div class="download-info">
-                    <div class="file-info">
-                        <i class="fab fa-windows"></i>
-                        <div>
-                            <strong>GyroAir.exe</strong>
-                            <span>Windows 10/11 Compatible</span>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">0ms</span>
+                            <span class="stat-label">Latency</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Free</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Wi-Fi</span>
+                            <span class="stat-label">Only</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta">
+                        <button id="downloadBtn" class="cta-primary">
+                            <i class="fas fa-download"></i>
+                            <span class="btn-text">Download for Windows</span>
+                            <div class="btn-shine"></div>
+                        </button>
+
+                        <button class="cta-secondary" onclick="window.open('https://github.com/Akshay-cp7/gyro_air', '_blank')">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
+                        </button>
+                    </div>
+
+                    <div class="trust-indicators">
+                        <span class="trust-text">Works with any modern Android phone</span>
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <i class="fab fa-windows"></i>
+                                <span>Windows 10/11</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fab fa-android"></i>
+                                <span>Android 6.0+</span>
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>100% Safe</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <button id="downloadBtn" class="download-btn">
-                    <i class="fas fa-download"></i>
-                    <span class="btn-text">Download for Windows</span>
-                    <div class="btn-loader">
-                        <div class="loader"></div>
+                <!-- Right Side - Creative Gyroscope Visualization -->
+                <div class="hero-visual">
+                    <div class="gyroscope-container">
+                        <!-- Outer Gyroscope Ring -->
+                        <div class="gyro-ring gyro-ring-outer">
+                            <div class="ring-axis ring-x"></div>
+                            <div class="ring-markers">
+                                <div class="marker marker-1"></div>
+                                <div class="marker marker-2"></div>
+                                <div class="marker marker-3"></div>
+                                <div class="marker marker-4"></div>
+                            </div>
+                        </div>
+
+                        <!-- Middle Gyroscope Ring -->
+                        <div class="gyro-ring gyro-ring-middle">
+                            <div class="ring-axis ring-y"></div>
+                            <div class="ring-gradient"></div>
+                        </div>
+
+                        <!-- Inner Gyroscope Ring -->
+                        <div class="gyro-ring gyro-ring-inner">
+                            <div class="ring-axis ring-z"></div>
+                            <div class="inner-core">
+                                <i class="fas fa-mobile-alt phone-icon"></i>
+                                <div class="pulse-ring"></div>
+                            </div>
+                        </div>
+
+                        <!-- Motion Trails -->
+                        <div class="motion-trails">
+                            <div class="trail trail-1"></div>
+                            <div class="trail trail-2"></div>
+                            <div class="trail trail-3"></div>
+                        </div>
+
+                        <!-- Cursor Indicator -->
+                        <div class="cursor-indicator">
+                            <div class="cursor-dot"></div>
+                            <div class="cursor-trail"></div>
+                        </div>
+
+                        <!-- Rotation Indicators -->
+                        <div class="rotation-indicators">
+                            <div class="rotation-arrow rotation-x">
+                                <i class="fas fa-arrow-right"></i>
+                                <span>X-Axis</span>
+                            </div>
+                            <div class="rotation-arrow rotation-y">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>Y-Axis</span>
+                            </div>
+                            <div class="rotation-arrow rotation-z">
+                                <i class="fas fa-redo"></i>
+                                <span>Z-Axis</span>
+                            </div>
+                        </div>
+
+                        <!-- Gyroscope Data Display -->
+                        <div class="gyro-data">
+                            <div class="data-readout">
+                                <div class="data-line">
+                                    <span class="data-label">X:</span>
+                                    <span class="data-value" id="gyroX">0.0°</span>
+                                </div>
+                                <div class="data-line">
+                                    <span class="data-label">Y:</span>
+                                    <span class="data-value" id="gyroY">0.0°</span>
+                                </div>
+                                <div class="data-line">
+                                    <span class="data-label">Z:</span>
+                                    <span class="data-value" id="gyroZ">0.0°</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </button>
 
-                <div class="download-links">
-                    <a href="https://github.com/Akshay-cp7/gyro_air" target="_blank" class="link-btn">
-                        <i class="fab fa-github"></i>
-                        View Source Code
-                    </a>
-                    <a href="https://github.com/Akshay-cp7/gyro_air/releases" target="_blank" class="link-btn">
-                        <i class="fas fa-tags"></i>
-                        All Releases
-                    </a>
+                    <!-- Interactive Hint -->
+                    <div class="interaction-hint">
+                        <div class="hint-icon">
+                            <i class="fas fa-hand-point-up"></i>
+                        </div>
+                        <p>Hover to see gyroscope in action</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- How It Works -->
-        <section class="how-it-works">
-            <h2>How It Works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Download & Run</h3>
-                    <p>Download and run the GyroAir PC client on your Windows computer</p>
+    <!-- Quick Setup Section -->
+    <section class="setup-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Started in <span class="highlight">3 Simple Steps</span></h2>
+                <p>Connect your devices and start controlling your PC wirelessly in under 2 minutes</p>
+            </div>
+
+            <div class="setup-timeline">
+                <div class="setup-step">
+                    <div class="step-indicator">
+                        <div class="step-number">1</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Same Wi-Fi Network</h3>
+                        <p>Ensure both your PC and smartphone are connected to the <strong>same Wi-Fi network</strong>. This creates a secure local connection between your devices.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Get Mobile App</h3>
-                    <p>Install the GyroAir mobile app on your Android device</p>
+
+                <div class="setup-step">
+                    <div class="step-indicator">
+                        <div class="step-number">2</div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Install PC Client</h3>
+                        <p>Download and run the GyroAir PC application. <strong>Run as administrator</strong> for optimal performance and allow through Windows Firewall when prompted.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Connect</h3>
-                    <p>Enter your PC's IP address in the mobile app to establish connection</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Control</h3>
-                    <p>Start using your phone as a wireless mouse and keyboard!</p>
+
+                <div class="setup-step">
+                    <div class="step-indicator">
+                        <div class="step-number">3</div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-mobile-screen-button"></i>
+                        </div>
+                        <h3>Start Phone Server</h3>
+                        <p>Install the mobile app, enter your PC's IP address, and <strong>start the server</strong>. Your phone is now a wireless mouse and keyboard!</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer>
+    <!-- Features Showcase -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features for Seamless Control</h2>
+                <p>Everything you need for wireless PC control, built with precision and care</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card primary">
+                    <div class="feature-icon">
+                        <i class="fas fa-compass"></i>
+                        <div class="icon-glow"></div>
+                    </div>
+                    <h3>Gyroscope Control</h3>
+                    <p>Ultra-precise cursor movement using your phone's built-in gyroscope sensor. Natural hand movements translate to smooth on-screen control.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3>Virtual Keyboard</h3>
+                    <p>Full keyboard functionality with shortcuts, special keys, and text input. Type documents, enter passwords, and execute commands remotely.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Zero Latency</h3>
+                    <p>Lightning-fast response times over Wi-Fi connection. Experience real-time control without delays or lag for smooth productivity.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>All communication stays within your local network. No cloud servers, no data collection, no privacy concerns. Your control, your network.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fab fa-osi"></i>
+                    </div>
+                    <h3>Open Source</h3>
+                    <p>Completely free and transparent. Inspect the code, contribute improvements, or fork for your own needs. Community-driven development.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>No Setup Hassle</h3>
+                    <p>Skip Bluetooth pairing and cable connections. Simple Wi-Fi based setup gets you controlling your PC in minutes, not hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <div class="download-card">
+                <div class="download-content">
+                    <h2>Ready to Go Wireless?</h2>
+                    <p>Download GyroAir PC Client and start controlling your computer with your smartphone today.</p>
+
+                    <div class="download-info">
+                        <div class="file-details">
+                            <i class="fab fa-windows"></i>
+                            <div>
+                                <strong>GyroAir.exe</strong>
+                                <span>Windows 10/11 • 2.4MB • Free Forever</span>
+                            </div>
+                        </div>
+
+                        <div class="security-notice">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Windows may show a security warning because we're not a verified publisher yet. Click "More info" → "Run anyway" to install.</p>
+                        </div>
+                    </div>
+
+                    <div class="download-actions">
+                        <button id="downloadBtnMain" class="download-primary">
+                            <i class="fas fa-download"></i>
+                            <span>Download for Windows</span>
+                            <div class="download-shine"></div>
+                        </button>
+
+                        <div class="alternative-links">
+                            <a href="https://github.com/Akshay-cp7/gyro_air" target="_blank" class="alt-link">
+                                <i class="fab fa-github"></i>
+                                Source Code
+                            </a>
+                            <a href="https://github.com/Akshay-cp7/gyro_air/releases" target="_blank" class="alt-link">
+                                <i class="fas fa-history"></i>
+                                All Releases
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-visual">
+                    <div class="download-animation">
+                        <div class="download-icon">
+                            <i class="fas fa-cloud-download-alt"></i>
+                        </div>
+                        <div class="download-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span class="progress-text">Ready to download</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about GyroAir</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is GyroAir completely free?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! GyroAir is completely free and open-source. There are no hidden fees, premium features, or subscriptions. You get full functionality at zero cost.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need to install anything on my phone?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you'll need to install the GyroAir mobile app on your Android device. The app is lightweight and provides the interface to control your PC wirelessly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Why does Windows show a security warning?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Windows SmartScreen flags unsigned software from new developers. GyroAir is safe - you can verify this by checking our open-source code on GitHub. Simply click "More info" then "Run anyway" to install.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What's the range of the wireless connection?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The range depends on your Wi-Fi network coverage. As long as both devices are connected to the same Wi-Fi network, GyroAir will work anywhere within your network's range.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How accurate is the gyroscope control?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The gyroscope control is extremely precise and responsive. Modern smartphones have high-quality gyroscope sensors that provide smooth, accurate cursor movement. You can adjust sensitivity in the app settings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>GyroAir</h4>
-                    <p>Open source PC remote control solution</p>
+                <div class="footer-brand">
+                    <h3>GyroAir</h3>
+                    <p>Transform your smartphone into a wireless mouse and keyboard. Free, open-source, and built for everyone.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Akshay-cp7/gyro_air" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Links</h4>
-                    <a href="https://github.com/Akshay-cp7/gyro_air" target="_blank">GitHub Repository</a>
-                    <a href="https://github.com/Akshay-cp7/gyro_air/issues" target="_blank">Report Issues</a>
-                    <a href="https://github.com/Akshay-cp7/gyro_air/wiki" target="_blank">Documentation</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Developer</h4>
-                    <p>Created by <a href="https://github.com/Akshay-cp7" target="_blank">Akshay-cp7</a></p>
-                    <p>Open Source • MIT License</p>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#setup">Setup Guide</a>
+                        <a href="https://github.com/Akshay-cp7/gyro_air/releases" target="_blank">Download</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="https://github.com/Akshay-cp7/gyro_air/wiki" target="_blank">Documentation</a>
+                        <a href="https://github.com/Akshay-cp7/gyro_air/issues" target="_blank">Report Issues</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Community</h4>
+                        <a href="https://github.com/Akshay-cp7/gyro_air" target="_blank">GitHub</a>
+                        <a href="https://github.com/Akshay-cp7/gyro_air/discussions" target="_blank">Discussions</a>
+                        <a href="https://github.com/Akshay-cp7/gyro_air/graphs/contributors" target="_blank">Contributors</a>
+                    </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 GyroAir. Open source software distributed under MIT License.</p>
+                <p>&copy; 2025 GyroAir. Open source under MIT License. Built with ❤️ by the community.</p>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
