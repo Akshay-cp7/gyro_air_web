@@ -37,9 +37,9 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-h2 { font-size: clamp(2rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+h3 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
 p {
     font-size: 1rem;
@@ -53,23 +53,23 @@ p {
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
-
+    
     --surface-primary: #ffffff;
     --surface-secondary: #f8fafc;
     --surface-tertiary: #f1f5f9;
-
+    
     --text-primary: #1a1a1a;
     --text-secondary: #6b7280;
     --text-muted: #9ca3af;
-
+    
     --border-light: #e5e7eb;
     --border-medium: #d1d5db;
-
+    
     --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-
+    
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 16px;
@@ -213,7 +213,7 @@ p {
 }
 
 .hero-description {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.8;
     margin-bottom: 2rem;
     color: rgba(255,255,255,0.8);
@@ -307,45 +307,13 @@ p {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-decoration: none;
 }
 
 .cta-secondary:hover {
     background: rgba(255,255,255,0.1);
     border-color: rgba(255,255,255,0.5);
     transform: translateY(-2px);
-}
-
-/* Trust Indicators */
-.trust-indicators {
-    animation: slideInUp 1s ease-out 1.2s both;
-}
-
-.trust-text {
-    display: block;
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.trust-badges {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.trust-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-md);
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.9);
 }
 
 /* CREATIVE GYROSCOPE VISUALIZATION */
@@ -365,8 +333,8 @@ p {
 
 .gyroscope-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 320px;
+    height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -386,24 +354,24 @@ p {
 }
 
 .gyro-ring-outer {
-    width: 350px;
-    height: 350px;
+    width: 280px;
+    height: 280px;
     border-color: rgba(255,255,255,0.4);
     animation: rotateX 8s linear infinite;
     box-shadow: 0 0 30px rgba(255,255,255,0.2);
 }
 
 .gyro-ring-middle {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-color: rgba(240,147,251,0.6);
     animation: rotateY 6s linear infinite reverse;
     box-shadow: 0 0 25px rgba(240,147,251,0.3);
 }
 
 .gyro-ring-inner {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-color: rgba(79,172,254,0.8);
     animation: rotateZ 4s linear infinite;
     box-shadow: 0 0 20px rgba(79,172,254,0.4);
@@ -504,8 +472,8 @@ p {
 /* Inner Core */
 .inner-core {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(20px);
     border-radius: 50%;
@@ -520,7 +488,7 @@ p {
 }
 
 .phone-icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
     animation: phoneBob 3s ease-in-out infinite;
 }
@@ -580,47 +548,6 @@ p {
 @keyframes trailMove {
     0%, 100% { opacity: 0; transform: translateY(0); }
     50% { opacity: 1; transform: translateY(-30px); }
-}
-
-/* Cursor Indicator */
-.cursor-indicator {
-    position: absolute;
-    top: 15%;
-    right: 15%;
-    z-index: 10;
-}
-
-.cursor-dot {
-    width: 12px;
-    height: 12px;
-    background: #ff6b6b;
-    border-radius: 50%;
-    position: relative;
-    animation: cursorMove 4s ease-in-out infinite;
-    box-shadow: 0 0 15px rgba(255,107,107,0.6);
-}
-
-@keyframes cursorMove {
-    0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(30px, -20px); }
-    50% { transform: translate(-20px, 25px); }
-    75% { transform: translate(15px, -30px); }
-}
-
-.cursor-trail {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(to right, rgba(255,107,107,0.8), transparent);
-    transform: translate(-50%, -50%);
-    animation: trailFade 4s ease-in-out infinite;
-}
-
-@keyframes trailFade {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
 }
 
 /* Rotation Indicators */
@@ -715,29 +642,6 @@ p {
     66% { color: #f59e0b; }
 }
 
-/* Interaction Hint */
-.interaction-hint {
-    margin-top: 3rem;
-    text-align: center;
-    animation: hintBounce 2s ease-in-out infinite;
-}
-
-.hint-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: rgba(255,255,255,0.7);
-}
-
-.interaction-hint p {
-    color: rgba(255,255,255,0.6);
-    font-size: 0.875rem;
-}
-
-@keyframes hintBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
 /* Interactive Hover Effects */
 .gyroscope-container:hover .gyro-ring-outer {
     animation-duration: 4s;
@@ -768,13 +672,13 @@ p {
 
 /* Setup Section */
 .setup-section {
-    padding: 6rem 0;
+    padding: 5rem 0;
     background: var(--surface-secondary);
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .section-header h2 {
@@ -805,7 +709,7 @@ p {
 .setup-step {
     display: flex;
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     position: relative;
 }
 
@@ -819,8 +723,8 @@ p {
 }
 
 .step-number {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background: var(--primary-gradient);
     color: white;
     border-radius: 50%;
@@ -828,17 +732,17 @@ p {
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 1rem;
     box-shadow: var(--shadow-medium);
 }
 
 .step-line {
     position: absolute;
-    top: 3rem;
+    top: 2.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    height: 3rem;
+    height: 2.5rem;
     background: linear-gradient(to bottom, #667eea, transparent);
 }
 
@@ -849,7 +753,7 @@ p {
 .step-content {
     flex: 1;
     background: white;
-    padding: 2rem;
+    padding: 1.75rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-small);
     border: 1px solid var(--border-light);
@@ -862,15 +766,15 @@ p {
 }
 
 .step-icon {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background: var(--surface-secondary);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: #667eea;
 }
 
@@ -886,19 +790,19 @@ p {
 
 /* Features Section */
 .features-section {
-    padding: 6rem 0;
+    padding: 5rem 0;
     background: white;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }
 
 .feature-card {
     background: white;
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.5rem;
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-light);
     transition: all 0.4s ease;
@@ -947,15 +851,15 @@ p {
 
 .feature-icon {
     position: relative;
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     background: var(--surface-secondary);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #667eea;
     transition: all 0.3s ease;
 }
@@ -992,7 +896,7 @@ p {
 
 /* Download Section */
 .download-section {
-    padding: 6rem 0;
+    padding: 5rem 0;
     background: var(--surface-secondary);
 }
 
@@ -1089,7 +993,7 @@ p {
     background: var(--primary-gradient);
     color: white;
     border: none;
-    padding: 1.25rem 2rem;
+    padding: 1.125rem 2rem;
     border-radius: var(--radius-full);
     font-weight: 600;
     font-size: 1.125rem;
@@ -1156,7 +1060,7 @@ p {
 }
 
 .download-icon {
-    font-size: 4rem;
+    font-size: 3rem;
     color: #667eea;
     margin-bottom: 1.5rem;
     animation: downloadBounce 2s ease-in-out infinite;
@@ -1201,7 +1105,7 @@ p {
 
 /* FAQ Section */
 .faq-section {
-    padding: 6rem 0;
+    padding: 5rem 0;
     background: white;
 }
 
@@ -1365,13 +1269,13 @@ p {
     }
 
     .gyroscope-container {
-        width: 300px;
-        height: 300px;
+        width: 280px;
+        height: 280px;
     }
 
-    .gyro-ring-outer { width: 280px; height: 280px; }
-    .gyro-ring-middle { width: 200px; height: 200px; }
-    .gyro-ring-inner { width: 120px; height: 120px; }
+    .gyro-ring-outer { width: 260px; height: 260px; }
+    .gyro-ring-middle { width: 180px; height: 180px; }
+    .gyro-ring-inner { width: 110px; height: 110px; }
 
     .download-card {
         grid-template-columns: 1fr;
@@ -1415,19 +1319,14 @@ p {
         justify-content: center;
     }
 
-    .trust-badges {
-        flex-direction: column;
-        align-items: center;
-    }
-
     .gyroscope-container {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
     }
 
-    .gyro-ring-outer { width: 230px; height: 230px; }
-    .gyro-ring-middle { width: 160px; height: 160px; }
-    .gyro-ring-inner { width: 100px; height: 100px; }
+    .gyro-ring-outer { width: 200px; height: 200px; }
+    .gyro-ring-middle { width: 140px; height: 140px; }
+    .gyro-ring-inner { width: 90px; height: 90px; }
 
     .rotation-indicators {
         display: none;

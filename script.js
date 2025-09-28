@@ -27,7 +27,7 @@ function initializeDownload() {
         // Update button text
         const buttonText = button.querySelector('.btn-text') || button.querySelector('span');
         const originalText = buttonText ? buttonText.textContent : 'Download for Windows';
-
+        
         if (buttonText) {
             buttonText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
         }
@@ -79,7 +79,7 @@ function initializeGyroscopeAnimation() {
     const gyroX = document.getElementById('gyroX');
     const gyroY = document.getElementById('gyroY');
     const gyroZ = document.getElementById('gyroZ');
-
+    
     if (!gyroContainer) return;
 
     let mouseX = 0;
@@ -130,7 +130,6 @@ function initializeGyroscopeAnimation() {
             const x = Math.sin(time * 0.7) * 15;
             const y = Math.cos(time * 0.5) * 12;
             const z = Math.sin(time * 0.3) * 8;
-
             updateGyroReadings(x, y, z);
         }
         requestAnimationFrame(animateReadings);
@@ -189,7 +188,6 @@ function initializeFAQ() {
 
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-
         if (question) {
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
@@ -202,14 +200,14 @@ function initializeFAQ() {
                 // Toggle current item
                 if (!isActive) {
                     item.classList.add('active');
-
+                    
                     // Smooth scroll to FAQ item if needed
                     setTimeout(() => {
                         const rect = item.getBoundingClientRect();
                         if (rect.bottom > window.innerHeight) {
-                            item.scrollIntoView({ 
-                                behavior: 'smooth', 
-                                block: 'nearest' 
+                            item.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest'
                             });
                         }
                     }, 300);
@@ -233,18 +231,16 @@ function initializeFAQ() {
 // Smooth Scrolling for Anchor Links
 function initializeSmoothScrolling() {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
-
+    
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
-
             if (targetId === '#') return;
 
             const targetElement = document.querySelector(targetId);
-
             if (targetElement) {
                 e.preventDefault();
-
+                
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -256,7 +252,6 @@ function initializeSmoothScrolling() {
 
                 // Update URL without jumping
                 history.pushState(null, null, targetId);
-
                 trackEvent('navigation_click', targetId);
             }
         });
@@ -275,7 +270,7 @@ function initializeScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-
+                
                 // Add staggered animation for child elements
                 const children = entry.target.querySelectorAll('.feature-card, .setup-step, .faq-item');
                 children.forEach((child, index) => {
@@ -338,7 +333,7 @@ function initializeScrollAnimations() {
 // Enhanced Button Effects
 function initializeButtonEffects() {
     const buttons = document.querySelectorAll('.cta-primary, .download-primary, .cta-secondary');
-
+    
     buttons.forEach(button => {
         // Add ripple effect
         button.addEventListener('click', function(e) {
@@ -515,7 +510,7 @@ function throttle(func, limit) {
             inThrottle = true;
             setTimeout(() => inThrottle = false, limit);
         }
-    }
+    };
 }
 
 // Event Tracking
@@ -538,23 +533,13 @@ function initializePerformanceMonitoring() {
     window.addEventListener('load', function() {
         // Use requestIdleCallback if available
         const scheduleWork = window.requestIdleCallback || setTimeout;
-
+        
         scheduleWork(() => {
             if ('performance' in window) {
                 const perfData = performance.timing;
                 const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-
                 console.log(`Page loaded in ${pageLoadTime}ms`);
-
-                // Track Core Web Vitals if supported
-                if ('web-vitals' in window) {
-                    getCLS(console.log);
-                    getFID(console.log);
-                    getFCP(console.log);
-                    getLCP(console.log);
-                    getTTFB(console.log);
-                }
-
+                
                 trackEvent('performance', `page_load_${Math.round(pageLoadTime)}ms`);
             }
         });
@@ -578,78 +563,21 @@ function initializeErrorHandling() {
 initializePerformanceMonitoring();
 initializeErrorHandling();
 
-// Lazy Loading for Images (if any are added later)
-function initializeLazyLoading() {
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        lazyImages.forEach(img => imageObserver.observe(img));
-    }
-}
-
-// Dark Mode Support (for future enhancement)
-function initializeDarkMode() {
-    // Check for user preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-    function handleDarkModeChange(e) {
-        if (e.matches) {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.remove('dark-mode');
-        }
-    }
-
-    // Listen for changes
-    prefersDark.addListener(handleDarkModeChange);
-
-    // Set initial state
-    handleDarkModeChange(prefersDark);
-}
-
-// Service Worker Registration (for PWA support)
-function initializeServiceWorker() {
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            // Uncomment when service worker is ready
-            // navigator.serviceWorker.register('/sw.js')
-            //     .then(registration => {
-            //         console.log('SW registered: ', registration);
-            //         trackEvent('sw_registered', 'success');
-            //     })
-            //     .catch(registrationError => {
-            //         console.log('SW registration failed: ', registrationError);
-            //         trackEvent('sw_registration_failed', registrationError.toString());
-            //     });
-        });
-    }
-}
-
 // Export functions for external use
 window.GyroAir = {
     // Core functions
     initializeDownload,
     initializeFAQ,
     initializeGyroscopeAnimation,
-
+    
     // Utilities
     debounce,
     throttle,
     trackEvent,
-
+    
     // Accessibility
     announceToScreenReader: () => window.announceToScreenReader,
-
+    
     // Version
     version: '1.0.0'
 };
