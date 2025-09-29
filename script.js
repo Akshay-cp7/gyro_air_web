@@ -94,21 +94,24 @@ function showSecurityModal() {
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
 
-        // Add animation
         requestAnimationFrame(() => {
             modal.classList.add('show');
         });
 
-        // Focus management for accessibility
-        const firstButton = modal.querySelector('.btn-primary');
-        if (firstButton) {
-            firstButton.focus();
+        // Focus on modal header or close button instead of bottom button
+        const modalHeader = modal.querySelector('.modal-header h3');
+        const closeButton = modal.querySelector('.modal-close');
+        if (modalHeader) {
+            modalHeader.setAttribute('tabindex', '-1');
+            modalHeader.focus();
+        } else if (closeButton) {
+            closeButton.focus();
         }
 
-        // Track event
         trackEvent('security_modal_shown', 'download_warning');
     }
 }
+
 
 // Close Security Modal
 function closeSecurityModal() {
