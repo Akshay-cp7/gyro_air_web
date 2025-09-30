@@ -23,7 +23,7 @@ function createSecurityWarningModal() {
                 <div class="warning-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <h3>Security Notice - Windows SmartScreen Warning</h3>
+                <h3>How to Install Without Issues</h3>
                 <button class="modal-close" onclick="closeSecurityModal()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -43,7 +43,7 @@ function createSecurityWarningModal() {
                 </div>
 
                 <div class="info-section">
-                    <h4><i class="fas fa-info-circle"></i> Why does this happen?</h4>
+                    <h4><i class="fas fa-info-circle"></i> Instructions (Scroll down to download) </h4>
                     <p>Windows SmartScreen shows this warning because we're not yet a verified publisher with Microsoft. This is normal for new software and doesn't mean the file is unsafe.</p>
 
                     <div class="solution-steps">
@@ -76,7 +76,7 @@ function createSecurityWarningModal() {
                 </button>
                 <button class="btn-primary" onclick="proceedWithDownload()">
                     <i class="fas fa-download"></i>
-                    I Understand, Download Anyway
+                    I Accept, Download
                 </button>
             </div>
         </div>
