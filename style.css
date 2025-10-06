@@ -782,11 +782,64 @@ p {
     color: var(--text-primary);
     margin-bottom: 0.75rem;
 }
+/* 2x2 Grid Layout - Compact and Clean */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.grid-item {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.grid-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    border-color: #667eea;
+}
+
+.grid-gif {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    border: 1px solid #f3f4f6;
+}
+
+.grid-item h3 {
+    font-size: 1rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.grid-item p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Responsive - Stack on Mobile */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
 
 .step-content p {
-    margin: 0;
-    line-height: 1.7;
+    color: #6b7280;
 }
+
 
 /* Features Section */
 .features-section {
