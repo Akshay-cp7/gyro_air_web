@@ -44,7 +44,7 @@ function createSecurityWarningModal() {
 
                 <div class="info-section">
                     <h4><i class="fas fa-info-circle"></i> Instructions (Scroll down to download) </h4>
-                    <p>Windows SmartScreen shows this warning because we're not yet a verified publisher with Microsoft. This is normal for new software and doesn't mean the file is unsafe.</p>
+                    <p>Windows SmartScreen shows this warning because I am not yet a verified publisher with Microsoft. This is normal for new software and doesn't mean the file is unsafe.</p>
 
                     <div class="solution-steps">
                         <h5><i class="fas fa-lightbulb"></i> How to proceed:</h5>

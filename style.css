@@ -1993,3 +1993,169 @@ button:focus,
     border: 2px dashed var(--border-medium);
 }
 
+/* Make heading shorter and remove descriptions on mobile */
+@media (max-width: 768px) {
+    /* Shorten the main heading */
+    .section-header h2 {
+        font-size: 1.25rem !important; /* Smaller heading */
+    }
+    
+    /* Hide grid item descriptions (paragraphs) on mobile */
+    .grid-item p {
+        display: none !important;
+    }
+    
+    /* Optionally reduce grid item padding for more compact look */
+    .grid-item {
+        padding: 1rem !important;
+    }
+    
+    /* Make heading more compact */
+    .grid-item h3 {
+        font-size: 0.95rem !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+
+/* Android Download Section */
+.android-download {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    padding: 80px 0;
+}
+
+.android-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.android-card .download-content h2 {
+    color: #3ddc84;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.android-card .file-details i.fa-android {
+    color: #3ddc84;
+    font-size: 2rem;
+}
+
+.play-store-btn {
+    background: linear-gradient(135deg, #3ddc84 0%, #2ba968 100%);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(61, 220, 132, 0.3);
+}
+
+.play-store-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(61, 220, 132, 0.4);
+}
+
+.play-store-btn i {
+    font-size: 1.5rem;
+}
+
+/* Android Visual Showcase - Continuous Horizontal Scroll */
+.android-visual {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.app-gallery {
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 24px;
+    animation: scrollGallery 25s linear infinite;
+}
+
+.gallery-image {
+    height: 400px;
+    width: auto;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+@keyframes scrollGallery {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% - 24px));
+    }
+}
+
+/* Responsive Design for Android Section */
+@media (max-width: 992px) {
+    .android-card {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .android-visual {
+        order: 2;
+    }
+    
+    .android-card .download-content {
+        order: 1;
+    }
+    
+    .gallery-image {
+        height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .android-download {
+        padding: 60px 0;
+    }
+    
+    .android-card .download-content h2 {
+        font-size: 2rem;
+    }
+    
+    .play-store-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+    
+    .gallery-image {
+        height: 280px;
+    }
+    
+    .gallery-track {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-image {
+        height: 220px;
+    }
+    
+    .gallery-track {
+        gap: 12px;
+    }
+}
