@@ -168,6 +168,60 @@ p {
     z-index: 2;
     position: relative;
 }
+@media (max-width: 768px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hero-visual {
+        order: -1;
+        margin-bottom: 1rem;
+    }
+    
+    .gyroscope-container {
+        width: 240px;
+        height: 240px;
+        transform: scale(0.85);
+    }
+    
+    .gyro-ring-outer { 
+        width: 220px; 
+        height: 220px; 
+    }
+    
+    .gyro-ring-middle { 
+        width: 160px; 
+        height: 160px; 
+    }
+    
+    .gyro-ring-inner { 
+        width: 100px; 
+        height: 100px; 
+    }
+    
+    .gyro-data {
+        display: none;
+    }
+    
+    /* Reduce hero description font size for mobile */
+    .hero-description {
+        font-size: 0.9rem; /* Reduced from 1.125rem (18px) to 0.9rem (~14-15px) */
+        line-height: 1.6; /* Slightly tighter line height */
+        margin-bottom: 1.5rem;
+    }
+    
+    .rotation-indicators {
+        opacity: 0.5;
+        font-size: 0.65rem;
+    }
+    
+    .rotation-arrow span {
+        display: none;
+    }
+}
+
+
 
 .hero-content {
     animation: slideInUp 1s ease-out;
@@ -1938,3 +1992,4 @@ button:focus,
     border-radius: var(--radius-md);
     border: 2px dashed var(--border-medium);
 }
+
